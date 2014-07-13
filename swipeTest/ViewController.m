@@ -12,6 +12,8 @@
 - (IBAction)swipeLeft:(id)sender;
 - (IBAction)swipeRight:(id)sender;
 @property (weak, nonatomic) IBOutlet UIView *overView;
+- (IBAction)pushButton:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UIButton *disableButton;
 
 @end
 
@@ -38,6 +40,9 @@
   }
   
   [UIView animateWithDuration:0.5 animations: ^{ _overView.center = location; }];
+
+  _disableButton.enabled = NO;
+
 }
 
 - (IBAction)swipeRight:(id)sender {
@@ -49,6 +54,12 @@
   //  _overView.center = CGPointMake(200, 200);
   [UIView animateWithDuration:0.5 animations:^{_overView.center = location; }];
   
+  _disableButton.enabled = YES;
+  
+}
+
+- (IBAction)pushButton:(UIButton *)sender {
+  NSLog(@"%@", [sender currentTitle]);
 }
 
 @end

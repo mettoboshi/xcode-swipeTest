@@ -9,6 +9,9 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+- (IBAction)swipeLeft:(id)sender;
+- (IBAction)swipeRight:(id)sender;
+@property (weak, nonatomic) IBOutlet UIView *overView;
 
 @end
 
@@ -24,6 +27,28 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)swipeLeft:(id)sender {
+  NSLog(@"SwipeLeft");
+  CGPoint location = _overView.center;
+  
+  if (_overView.center.x > self.view.center.x) {
+    location.x -= 120;
+  }
+  
+  [UIView animateWithDuration:0.5 animations: ^{ _overView.center = location; }];
+}
+
+- (IBAction)swipeRight:(id)sender {
+  NSLog(@"SwipeRight");
+  CGPoint location = _overView.center;
+  if (_overView.center.x == super.view.center.x) {
+    location.x += 120;
+  }
+  //  _overView.center = CGPointMake(200, 200);
+  [UIView animateWithDuration:0.5 animations:^{_overView.center = location; }];
+  
 }
 
 @end
